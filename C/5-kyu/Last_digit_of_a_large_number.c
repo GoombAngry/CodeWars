@@ -24,7 +24,7 @@ int last_digit(const char *a, const char *b)
     n1 = (l_a > (size_t)1)?extractNumber(&a[l_a - (size_t)1]):(int)*a - 48;
     n2 = (l_b > (size_t)1)?extractNumber(&b[l_b - (size_t)2]):extractNumber(&b[l_b - (size_t) 1]);
     n2 = n2 % 4 == 0?4:n2 % 4;
-    return (int)pow((double)n1,(double)n2) % 10;
+    return (int)pow((double)n1,(double)(n2 % 4 == 0?4:n2 % 4)) % 10;
 }
 
 int main(){
@@ -32,6 +32,7 @@ int main(){
     printf("Result -> %d\n",last_digit("0","0"));
     printf("Result -> %d\n",last_digit("0","2"));
     printf("Result -> %d\n",last_digit("13","0"));
+    printf("Result -> %d\n",last_digit("2","3"));
     printf("Result -> %d\n",last_digit("188393","10"));
     
     return 0;
